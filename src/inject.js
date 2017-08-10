@@ -10,7 +10,7 @@ function convertHex(hex){
     return result;
 }
 
-var borderColor = "";
+var borderColor = "#00FFFF";
 var boderColorRGB = "";
 
 chrome.storage.sync.get({
