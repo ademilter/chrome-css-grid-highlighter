@@ -34,7 +34,8 @@
       "js": [
         "src/jquery.min.js",
         "src/inject.js"
-      ]
+      ],
+      "all_frames": true
     }
   ],
   "permissions": [
