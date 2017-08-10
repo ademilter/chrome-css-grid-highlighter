@@ -3,6 +3,11 @@ var port = chrome.extension.connect();
 port.onMessage.addListener(function (msg) {
 	if (msg.message === "aktif") {
 		initGridInspector();
+		
+		// Resize olduğunda hesaplamıyordu :)
+		window.onresize = function() {
+		  initGridInspector();
+		}
 	} else {
 		$(".GridInspector").remove();
 	}
