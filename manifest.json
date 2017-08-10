@@ -18,6 +18,10 @@
     ],
     "persistent": true
   },
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  },
   "content_scripts": [
     {
       "matches": [
@@ -34,6 +38,7 @@
     }
   ],
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "storage"
   ]
 }

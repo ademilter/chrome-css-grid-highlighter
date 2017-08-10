@@ -1,5 +1,25 @@
 var port = chrome.extension.connect();
 
+function convertHex(hex){
+    hex = hex.replace('#','');
+    r = parseInt(hex.substring(0,2), 16);
+    g = parseInt(hex.substring(2,4), 16);
+    b = parseInt(hex.substring(4,6), 16);
+
+    result = r+','+g+','+b;
+    return result;
+}
+
+var borderColor = "";
+var boderColorRGB = "";
+
+chrome.storage.sync.get({
+    borderColor
+  }, (items) => {
+	borderColor = items.borderColor;
+	boderColorRGB = convertHex(items.borderColor);
+});
+
 port.onMessage.addListener(function (msg) {
 	if (msg.message === "aktif") {
 		initGridInspector();
@@ -35,7 +55,7 @@ function initGridInspector() {
 				boxSizing: 'border-box',
 				position: 'absolute',
 				zIndex: '9999',
-				border: '1px solid cyan',
+				border: "1px solid "+borderColor,
 				width: $grid.width(),
 				height: $grid.height(),
 				left: elStyles.getPropertyValue('padding-left'),
@@ -74,9 +94,9 @@ function initGridInspector() {
 						left: 0,
 						right: 0,
 						height: gridRowsGap,
-						border: 'dashed cyan',
+						border: 'dashed ' + borderColor,
 						borderWidth: '1px 0',
-						backgroundColor: 'rgba(0, 255, 255, 0.2)',
+						backgroundColor: 'rgba('+boderColorRGB+', 0.2)',
 						backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255,255,255, .8) 5px, rgba(255,255,255, .8) 10px)'
 					})
 					top += gridRowsGap
@@ -96,9 +116,9 @@ function initGridInspector() {
 						left: left,
 						width: gridColumnsGap,
 						height: '100%',
-						border: 'dashed cyan',
+						border: 'dashed ' + borderColor,
 						borderWidth: '0 1px',
-						backgroundColor: 'rgba(0, 255, 255, 0.2)',
+						backgroundColor: 'rgba('+boderColorRGB+', 0.2)',
 						backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(255,255,255, .8) 5px, rgba(255,255,255, .8) 10px)'
 					})
 					left += gridColumnsGap
