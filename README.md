@@ -6,3 +6,10 @@
 - [Download repo](https://github.com/ademilter/chrome-css-grid-highlighter/archive/master.zip)
 - Extract zip file
 - Drag 'n drop folder -> Chrome Extensions (chrome://extensions/)
+
+# Features
+- [x] Custom RGB border color (in extension option)
+- [ ] Column and row line names
+- [ ] When page load, if grid is detected, the icon becomes colored.
+- [ ] Chrome Web Store
+- [ ] Jquery-free
