@@ -1,13 +1,13 @@
 var _extensionPort;
-var status = "aktif";
+var status = 'aktif';
 
-chrome.runtime.onConnect.addListener(function (port) {
-  _extensionPort = port;
+chrome.runtime.onConnect.addListener(port => {
+  _extensionPort = port;  
 });
 
-chrome.browserAction.onClicked.addListener(function (tab) {
+chrome.browserAction.onClicked.addListener(tab => {
   _extensionPort.postMessage({
     message: status
   });
-  status = status === "aktif" ? "pasif" : "aktif";
+  status = status === 'aktif' ? 'pasif' : 'aktif';
 });

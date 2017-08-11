@@ -2,10 +2,10 @@ function save_options() {
   var borderColor = document.getElementById('borderColor').value;
   chrome.storage.sync.set({
     borderColor: borderColor
-  },function() {
+  }, () => {
     var status = document.getElementById('status');
     status.textContent = 'Options saved.';
-    setTimeout(function() {
+    setTimeout(() => {
       status.textContent = '';
     }, 750);
   });
@@ -13,7 +13,7 @@ function save_options() {
 function restore_options() {
   chrome.storage.sync.get({
     borderColor: '#00FFFF'
-  }, function(items) {
+  }, items => {
     document.getElementById('borderColor').value = items.borderColor;
   });
 }
