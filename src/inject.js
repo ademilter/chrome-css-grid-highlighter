@@ -1,13 +1,11 @@
 var port = chrome.extension.connect();
 
 function convertHex(hex) {
-  hex = hex.replace('#','');
-  r = parseInt(hex.substring(0,2), 16);
-  g = parseInt(hex.substring(2,4), 16);
-  b = parseInt(hex.substring(4,6), 16);
-
-  result = r+','+g+','+b;
-  return result;
+    var r = parseInt(hex.slice(1, 3), 16),
+        g = parseInt(hex.slice(3, 5), 16),
+        b = parseInt(hex.slice(5, 7), 16);
+    
+        return r+','+g+','+b;
 }
 
 var borderColor = '#00FFFF';
