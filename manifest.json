@@ -11,6 +11,12 @@
     "128": "icons/icon128.png"
   },
   "browser_action": {
+    "default_icon": {
+      "16": "icons/icon16-gray.png",
+      "19": "icons/icon19-gray.png",
+      "48": "icons/icon48-gray.png",
+      "128": "icons/icon128-gray.png"
+    }
   },
   "background": {
     "scripts": [
@@ -33,7 +39,8 @@
       ],
       "js": [
         "src/jquery.min.js",
-        "src/inject.js"
+        "src/inject.js",
+        "src/detector.js"
       ],
       "all_frames": true,
       "run_at": "document_end"

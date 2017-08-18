@@ -10,6 +10,6 @@
 # Features
 - [x] Custom RGB border color (in extension option)
 - [ ] Column and row line names
-- [ ] When page load, if grid is detected, the icon becomes colored.
+- [x] When page load, if grid is detected, the icon becomes colored.
 - [ ] Chrome Web Store
 - [ ] Jquery-free
