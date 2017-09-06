@@ -9,7 +9,6 @@ chrome.storage.sync.get({
 }, (items) => {
   borderColor = items.borderColor;
   borderColorWithOpacity = items.borderColor + borderOpacity;
-  debugger
 });
 
 window.onload = () => {
