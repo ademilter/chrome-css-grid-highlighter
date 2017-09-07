@@ -1,21 +1,14 @@
 var port = chrome.extension.connect();
 
-function convertHex(hex) {
-    var r = parseInt(hex.slice(1, 3), 16),
-        g = parseInt(hex.slice(3, 5), 16),
-        b = parseInt(hex.slice(5, 7), 16);
-    
-        return r+','+g+','+b;
-}
-
 var borderColor = '#00FFFF';
-var boderColorRGB = '';
+var borderColorWithOpacity = '';
+var borderOpacity = '40'
 
 chrome.storage.sync.get({
   borderColor
 }, (items) => {
   borderColor = items.borderColor;
-  boderColorRGB = convertHex(items.borderColor);
+  borderColorWithOpacity = items.borderColor + borderOpacity;
 });
 
 window.onload = () => {
@@ -95,7 +88,7 @@ window.onload = () => {
               height: gridRowsGap,
               border: 'dashed ' + borderColor,
               borderWidth: '1px 0',
-              backgroundColor: 'rgba('+boderColorRGB+', 0.2)',
+              backgroundColor: borderColorWithOpacity,
               backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255,255,255, .8) 5px, rgba(255,255,255, .8) 10px)'
             })
             top += gridRowsGap
@@ -117,7 +110,7 @@ window.onload = () => {
               height: '100%',
               border: 'dashed ' + borderColor,
               borderWidth: '0 1px',
-              backgroundColor: 'rgba('+boderColorRGB+', 0.2)',
+              backgroundColor: borderColorWithOpacity,
               backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(255,255,255, .8) 5px, rgba(255,255,255, .8) 10px)'
             })
             left += gridColumnsGap
